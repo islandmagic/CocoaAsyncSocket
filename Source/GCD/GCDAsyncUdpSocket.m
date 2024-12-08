@@ -4048,7 +4048,8 @@ enum GCDAsyncUdpSocketConfig
 		
 		[self notifyDidNotSendDataWithTag:currentSend->tag dueToError:error];
 		[self endCurrentSend];
-		[self maybeDequeueSend];
+		// This can cause infinite loop if the error is not handled properly
+		//[self maybeDequeueSend];
 		
 		return;
 	}
@@ -4087,7 +4088,7 @@ enum GCDAsyncUdpSocketConfig
 							
                             [self notifyDidSendDataWithTag:self->currentSend->tag];
 							[self endCurrentSend];
-							[self maybeDequeueSend];
+							//[self maybeDequeueSend];
 						}
 					}
 				}});
@@ -4114,7 +4115,7 @@ enum GCDAsyncUdpSocketConfig
 				
 				[self notifyDidSendDataWithTag:currentSend->tag];
 				[self endCurrentSend];
-				[self maybeDequeueSend];
+				//[self maybeDequeueSend];
 			}
 		}
 	}
