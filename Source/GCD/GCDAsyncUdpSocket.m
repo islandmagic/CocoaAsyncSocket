@@ -4240,7 +4240,7 @@ enum GCDAsyncUdpSocketConfig
 	{
 		[self notifyDidSendDataWithTag:currentSend->tag];
 		[self endCurrentSend];
-		[self maybeDequeueSend];
+		//[self maybeDequeueSend];
 	}
 }
 
